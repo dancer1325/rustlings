@@ -38,14 +38,14 @@ pub struct ExerciseDir {
 impl ExerciseDir {
     fn init_on_disk(&self) -> Result<()> {
         // 20 = 10 + 10
-        // exercises/ + /README.md
+        // exercises/ + /README.md.md
         let mut dir_path = String::with_capacity(20 + self.name.len());
         dir_path.push_str("exercises/");
         dir_path.push_str(self.name);
         create_dir_if_not_exists(&dir_path)?;
 
         let mut readme_path = dir_path;
-        readme_path.push_str("/README.md");
+        readme_path.push_str("/README.md.md");
 
         fs::write(&readme_path, self.readme)
             .with_context(|| format!("Failed to write the file {readme_path}"))
@@ -66,10 +66,10 @@ impl EmbeddedFiles {
         create_dir("exercises").context("Failed to create the directory `exercises`")?;
 
         fs::write(
-            "exercises/README.md",
+            "exercises/README.md.md",
             include_bytes!("../exercises/README.md"),
         )
-        .context("Failed to write the file exercises/README.md")?;
+        .context("Failed to write the file exercises/README.md.md")?;
 
         for dir in self.exercise_dirs {
             dir.init_on_disk()?;

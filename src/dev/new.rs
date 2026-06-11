@@ -62,7 +62,7 @@ pub fn new(path: &Path, no_git: bool) -> Result<()> {
 
     write_rel_file("Cargo.toml", &dir_path_str, CARGO_TOML)?;
 
-    write_rel_file("README.md", &dir_path_str, README)?;
+    write_rel_file("README.md.md", &dir_path_str, README)?;
 
     write_rel_file("rust-analyzer.toml", &dir_path_str, RUST_ANALYZER_TOML)?;
 

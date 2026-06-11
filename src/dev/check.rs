@@ -140,12 +140,12 @@ fn check_info_file_exercises(info_file: &InfoFile) -> Result<HashSet<PathBuf>> {
 }
 
 // Check `dir` for unexpected files.
-// Only Rust files in `allowed_rust_files` and `README.md` files are allowed.
+// Only Rust files in `allowed_rust_files` and `README.md.md` files are allowed.
 // Only one level of directory nesting is allowed.
 fn check_unexpected_files(dir: &str, allowed_rust_files: &HashSet<PathBuf>) -> Result<()> {
     let unexpected_file = |path: &Path| {
         anyhow!(
-            "Found the file `{}`. Only `README.md` and Rust files related to an exercise in `info.toml` are allowed in the `{dir}` directory",
+            "Found the file `{}`. Only `README.md.md` and Rust files related to an exercise in `info.toml` are allowed in the `{dir}` directory",
             path.display()
         )
     };
@@ -156,7 +156,7 @@ fn check_unexpected_files(dir: &str, allowed_rust_files: &HashSet<PathBuf>) -> R
         if entry.file_type().unwrap().is_file() {
             let path = entry.path();
             let file_name = path.file_name().unwrap();
-            if file_name == "README.md" {
+            if file_name == "README.md.md" {
                 continue;
             }
 
@@ -183,7 +183,7 @@ fn check_unexpected_files(dir: &str, allowed_rust_files: &HashSet<PathBuf>) -> R
             }
 
             let file_name = path.file_name().unwrap();
-            if file_name == "README.md" {
+            if file_name == "README.md.md" {
                 continue;
             }
 
