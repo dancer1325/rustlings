@@ -189,7 +189,7 @@ fn main() -> Result<ExitCode> {
 const OLD_METHOD_ERR: &str =
     "You are trying to run Rustlings using the old method before version 6.
 The new method doesn't include cloning the Rustlings' repository.
-Please follow the instructions in `README.md.md`:
+Please follow the instructions in `index.md.md`:
 https://github.com/rust-lang/rustlings#getting-started";
 
 const FORMAT_VERSION_HIGHER_ERR: &str =
